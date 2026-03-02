@@ -11,7 +11,8 @@ enum API {
 // Login API
 export const login = (data: LoginParams) => {
   // Mock login for demo purposes since we don't have a real backend
-  if (import.meta.env.MODE === 'development') {
+  // Enable mock for both development and production (GitHub Pages)
+  if (true) {
     return new Promise<LoginResponse>((resolve, reject) => {
       setTimeout(() => {
         if (data.username === 'admin' && data.password === '123456') {
@@ -62,7 +63,7 @@ export const login = (data: LoginParams) => {
 // Logout API
 export const logout = () => {
   // Mock logout
-  if (import.meta.env.MODE === 'development') {
+  if (true) {
     localStorage.removeItem('mock_role')
     return Promise.resolve()
   }
@@ -72,7 +73,7 @@ export const logout = () => {
 // Get User Info API
 export const getUserInfo = () => {
   // Mock get user info
-  if (import.meta.env.MODE === 'development') {
+  if (true) {
     const role = localStorage.getItem('mock_role') || Role.Admin
     const username = role
     const name = role.charAt(0).toUpperCase() + role.slice(1)
